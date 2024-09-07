@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,500;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anta&display=swap"
+      rel="stylesheet"
+    />
+    <link href="/output.css" rel="stylesheet" />
+    
+    
+
+
+  </head>
+  <body class="bg-white flex flex-col min-h-screen">
+
+    <!--- toggle -->
+    <div class="absolute top-0 left-10 z-20">
+      <img
+        src="/svg/auction.svg "
+        class="h-24 w-14  "
+        id="toggle"
+      />
+    </div>
+
+
+     <!-----Logout-->
+  <div class="absolute right-0 mr-10 top-7 z-20">
+    <button class="font-anta text-lg text-white border-2 px-4 py-2 border-solid border-black bg-black rounded-xl active:bg-white active:text-black" id="logoutbtn"> Logout </button>
+
+  </div>
+
+    <!--- navigation bar -->
+
+    <nav
+      class="absolute top-0 left-0 z-10 h-dvh w-36 bg-white font-anta font-bold rounded-r-lg transition ease-in-out delay-500 transform -translate-x-full md:w-52"
+      id="nav"
+    >
+      <ul>
+        <a href="/index.html">
+          <li class="relative top-20">
+            <span
+              class="flex items-center text-lg rounded-lg hover:bg-gray-400"
+            >
+              <img src="/svg/home.svg" class="h-11 w-7 m-2" alt="" /> Home
+            </span>
+          </li>
+        </a>
+
+        <li class="relative top-20">
+          <span
+            class="flex items-center text-lg rounded-lg hover:bg-gray-400"
+            id="Items"
+          >
+            <img src="/svg/bag.svg" class="h-12 w-8 m-2" alt="" /> Items
+          </span>
+          <ul class="text-lg hidden md:text-xl" id="dropdown">
+            <a href="/allitem.html">
+              <li class="hover:bg-gray-300 rounded-lg ml-4 mb-2">All Items</li>
+            </a>
+
+            <a href="/cart.html">
+              <li class="hover:bg-gray-300 rounded-lg ml-4">Cart</li>
+          </a>
+          
+          </ul>
+        </li>
+
+        <a href="/account.html">
+          <li class="relative top-20">
+            <span
+              class="flex items-center text-lg rounded-lg hover:bg-gray-400"
+            >
+              <img src="/svg/account.svg" class="h-12 w-8 m-2" alt="" /> Account
+            </span>
+          </li>
+        </a>
+        
+        <a href="/admin.html">
+        <li class="relative top-20">
+          <span
+            class="flex items-center text-lg rounded-lg hover:bg-gray-400"
+          >
+            <img src="/svg/dashboard.svg" class="h-12 w-8 m-2" alt="" /> Admin
+          </span>
+        </li>
+        </a>
+
+        <a href="/data.html">
+          <li class="relative top-20">
+            <span
+              class="flex items-center text-lg rounded-lg hover:bg-gray-400"
+            >
+              <img src="/svg/data.svg" class="h-12 w-8 m-2" alt="" /> Data
+            </span>
+          </li>
+          </a>
+
+
+
+      </ul>
+    </nav>
+
+    <!--- Main content-->
+
+    <div class="flex flex-col items-center gap-8 mt-28 p-2">
+
+      <div>
+        <p class="font-bold font-anta text-2xl " id="itemName">
+          
+        </p>
+      </div>
+
+      <div class=" font-anta text-md ">
+        <p id="itemDescription"></p>
+      </div>
+  
+
+       <!--- image-->
+
+    <div >
+      <img
+      class=" rounded-lg w-60 h-50 md:w-80 " id="itemImageURL"
+        src=""
+        
+      />
+    </div>
+
+    <!---------------------------------  Timer  ------------------------------------------------>
+
+    <div class="p-6 bg-white rounded shadow-lg flex flex-col items-center w-80  " id="timerbox">
+      <h1 class="text-2xl  mb-4">Bid Timer</h1>
+      
+      <div class="flex  space-x-4 mb-4"> 
+          <div class="flex flex-col items-center">
+              <label for="days" class="mb-2">Days</label>
+              <input id="days" type="number" class=" p-2 rounded w-24 border-black border-solid border-2" min="0">
+          </div>
+          <div class="flex flex-col items-center">
+              <label for="hours" class="mb-2">Hours</label>
+              <input id="hours" type="number" class=" p-2 rounded w-20 border-black border-solid border-2" min="0" max="23">
+          </div>
+          <div class="flex flex-col items-center">
+              <label for="minutes" class="mb-2">Minutes</label>
+              <input id="minutes" type="number" class=" p-2 rounded w-20 border-black border-solid border-2" min="0" max="59">
+          </div>
+      </div>
+
+      <button id="startTimer" class="bg-black text-white px-4 py-2 rounded">Start Timer</button>
+
+      
+  </div>
+
+  <div id="timer" class="mt-4 text-2xl"></div>
+
+    <!----------------- Alert Message ----------------->
+    <div id="messageBox" class=" fixed top-0 left-0 right-0 text-center  z-50  justify-center hidden">
+
+      <div id="messageContent" class="p-4 mb-4 text-sm  rounded-lg bg-red-50 text-red-800  " role="alert">
+        <span class="font-medium hidden" id="alertmessageText">Alert!</span> <span id="messageText"></span>
+      </div>
+  
+    </div>
+
+
+    <div id="bidDetailsContainer" class=" p-2 rounded-lg flex flex-col-reverse   ">
+
+      
+
+    </div>
+
+
+     <!-----AddtoCartbutton-->
+     <div>
+      <button class="bg-amber-300 font-anta rounded-lg  w-64 py-2  hover:bg-amber-500 hover:text-white md:w-80" id="CartButton"> Add to Cart</button>
+    </div>
+
+    <!-----Bidbutton-->
+    <div>
+      <button  class="bg-rose-300 font-anta rounded-lg  w-64 py-2  hover:bg-rose-500 hover:text-white md:w-80" id="BidButton"> Bid </button>
+    </div>
+
+
+    <!---Dialog-->
+    <div 
+    id="dialog"
+    class="fixed inset-0  w-screen h-screen bg-gray-100 bg-opacity-30  justify-center items-center hidden    ">
+
+      
+      <form id="formdialog" class="flex flex-col items-center justify-center  gap-4 border-[2px] border-rose-200 bg-white py-3 px-6 rounded-lg shadow-lg shadow-rose-300 opacity-100 w-96 h-60 ">
+
+        <div class="font-anta text-2xl ">
+          Enter Bid Amount
+        </div>
+
+
+      <div>
+        <input
+        class="w-64 md:w-80 p-2 font-bold font-anta text-xs shadow-lg border-solid border-2 border-gray-400 acitve:border-black rounded-lg  md:text-lg"
+        id="bidamount"
+        type="number"
+        placeholder=""
+
+        
+        
+        >
+        
+      </div>
+
+      <div class="flex flex-row justify-center items-center gap-4">
+
+        <!----- close bid button-->
+
+     <button  type="button" id="closeBid" class="border-gray-400  font-anta rounded-lg  px-6 py-2 border-[2px]  hover:border-black md:px-8">Close</button>
+
+     <!------ submit bid button -->
+      <button  id="submitBidButton" class="border-gray-400  font-anta rounded-lg  px-6 py-2 border-[2px] hover:border-black md:px-8">Submit</button>
+
+      
+
+    </div>
+      
+        </form>
+
+        
+
+    </div>
+    
+
+
+
+  <!------ delete button -->
+
+  <div>
+    <button class="bg-gray-300 font-anta rounded-lg  w-64 py-2  hover:bg-gray-500 hover:text-white md:w-80" id="deleteButton"> Remove</button>
+  </div>
+
+
+   <!---orders -->
+
+    
+   <div >
+    <button id="buybutton" class="bg-teal-300 font-anta rounded-lg  w-64 py-2  hover:bg-teal-500 hover:text-white md:w-80">
+        
+      
+        Buy Product
+      </button>
+  </div>
+
+
+  
+
+
+    </div>
+
+    
+
+  
+  <!----footer -->
+  <div class="mt-auto flex flex-col md:flex-row md:justify-between items-center text-md md:text-lg text-black">
+    <p class="order-2 md:order-1 mt-8 md:mt-0"> &copy; Auction Nest, 2024. </p>
+    <div class="order-1 md:order-2">
+        <span class="px-2 ">About us</span>
+        <span class="px-2 border-l-2 ">Contact us</span>
+        <span class="px-2 border-l-2">Privacy Policy</span>
+    </div>
+</div>
+
+    
+  </body>
+
+  <script   src="/itemDetails.js">  </script>
+</html>

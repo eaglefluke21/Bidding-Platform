@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-export const content = ["./auction/*.{html,js}"];
+export const content = ["./client/*.{html,js}"];
 export const theme = {
   extend: {
     fontFamily: {
